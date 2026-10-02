@@ -16,7 +16,9 @@ jobs:
     steps:
       - name: Checkout Step
         uses: actions/checkout@v6
-      - name: Enviroment variable list
+      - name: Definition env
         run: |
-          echo "Environment Variables:"
-          printenv
+          echo "Hello World"
+          echo $OSMAN
+        env:
+          OSMAN: "set value to OSMAN"
