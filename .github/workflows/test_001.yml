@@ -44,14 +44,13 @@ jobs:
     steps:
       - name: Checkout Step
         uses: actions/checkout@v6
-      - name: Osman Definition in Job env
+      - shell: bash
+        env:
+          Super_User: "Makina içinden erişim için... Variable tanımlıyoruz. UserName: "+${{ vars.DOCKERHUB_USERNAME }}
         run: |
-          echo "Hello Osman"
-          echo $OSMAN
-      - name: Definition in public env
-        run: |
-          echo "Hello World 2"
-          echo $DAY_OF_WEEK
+          echo "Hello Super User"
+          echo $Super_User
+
   SaveOutput:
     runs-on: ubuntu-latest
     steps:
