@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v6
       - shell: bash
         env:
-          Super_User: "Makina içinden erişim için... Variable tanımlıyoruz. UserName: "+${{ vars.DOCKERHUB_USERNAME }}
+          Super_User: "Makina içinden erişim için... Variable tanımlıyoruz. UserName: ${{ vars.DOCKERHUB_USERNAME }}"
         run: |
           echo "Hello Super User"
           echo $Super_User
