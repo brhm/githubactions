@@ -76,3 +76,13 @@ jobs:
       - name: Display Artifact Content
         run: |
           cat output.log
+
+  Github_Output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set step output
+        id: set_output
+        run: echo "message=Hello from GITHUB_OUTPUT" >> "$GITHUB_OUTPUT"
+      - name: Read step output
+        run: echo "${{ steps.set_output.outputs.message }}"
+    
