@@ -38,7 +38,6 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
   TestVariable:
     runs-on: ubuntu-latest
     needs: VariableInYAML
@@ -53,3 +52,29 @@ jobs:
         run: |
           echo "Hello World 2"
           echo $DAY_OF_WEEK
+  SaveOutput:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Step
+        uses: actions/checkout@v6
+      - name: Save Output to File
+        run: |
+          echo "Hello World 3" > output.log
+          echo $DAY_OF_WEEK >> output.log
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: output-artifact
+          path: output.log
+  UploadArtifact:
+    runs-on: ubuntu-latest
+    needs: SaveOutput
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: output-artifact
+          path: output.log
+      - name: Display Artifact Content
+        run: |
+          cat output.log
