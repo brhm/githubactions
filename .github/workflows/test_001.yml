@@ -43,3 +43,18 @@ jobs:
         run: |
           echo "Hello World 2"
           echo $DAY_OF_WEEK
+
+  test3:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Step
+        uses: actions/checkout@v6
+      - name: Osman Definition in Job env
+        run: |
+          echo "Hello Osman"
+          echo $OSMAN
+      - name: Definition in public env
+        run: |
+          echo "Hello World 2"
+          echo $DAY_OF_WEEK
