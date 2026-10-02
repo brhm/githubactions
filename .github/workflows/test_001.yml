@@ -1,0 +1,22 @@
+name: Test Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Step
+        uses: actions/checkout@v6
+      - name: Enviroment variable list
+        run: |
+          echo "Environment Variables:"
+          printenv
